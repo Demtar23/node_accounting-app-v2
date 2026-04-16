@@ -191,9 +191,11 @@ function createServer() {
       return;
     }
 
-    const newExpenses = expenses.filter((expense) => expense.id !== Number(id));
+    const newListOfExpenses = expenses.filter(
+      (expense) => expense.id !== Number(id),
+    );
 
-    expenses = newExpenses;
+    expenses = newListOfExpenses;
 
     res.sendStatus(204);
   });
