@@ -131,19 +131,13 @@ function createServer() {
   app.post('/expenses', (req, res) => {
     const { userId, spentAt, title, amount, category, note } = req.body;
 
-    if (
-      userId == null ||
-      title == null ||
-      amount == null ||
-      category == null ||
-      note == null
-    ) {
+    if (userId == null || title == null || amount == null || category == null) {
       res.sendStatus(400);
 
       return;
     }
 
-    const userExist = users.find((user) => user.id === userId);
+    const userExist = users.find((user) => user.id === Number(userId));
 
     if (!userExist) {
       res.sendStatus(400);
